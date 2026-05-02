@@ -1,5 +1,5 @@
 # Plant-Simulator-
-Code that lets the user go through a list of plant types. Eventually, depending on the inputs the code tells them to use, the program will output how to care for the selected plant.
+Code that lets the user go through a list of plant types. Eventually, depending on the inputs the code tells them to use, the program will output how to care for the selected plant. The inputs are either 0's, 1's, or other depending on what the code tells the user to pick from.
 
 The code utilizes:
 
