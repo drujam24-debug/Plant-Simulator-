@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class PlantSimulator {
   //method to call and print text relating to stuff
   public static void printPlantInfo(String selectedPlant){
@@ -100,10 +101,13 @@ public class PlantSimulator {
     Scanner scnr = new Scanner(System.in);
     String [][] plantType = new String [2][8];
     String selectedPlant;
-    int inputA;
-    int inputB;
-    int confirmationInput = -1;
+    String inputA = "-1";
+    int inputAInt = -1;
+    String inputB = "-1";
+    int inputBInt = -1;
+    String confirmationInput = "-1";
     boolean result = true;
+    boolean result2 = true;
     
     
     //array setup, 0 is in while 1 is out
@@ -131,22 +135,24 @@ public class PlantSimulator {
     System.out.println("Is it an indoor (0) or outdoor (1) plant?");
     System.out.println("");
     
-    inputA = scnr.nextInt();
+    
+    inputA = scnr.nextLine();
     
     
+    //Check if user selected indoor or outdoor plant and print appropriate message, inputA
+    result = true;
 
-    
-    //Check if user selected indoor or outdoor plant and print appropriate message
     while(result){
+        
         try{
-            if ((inputA != 0) && (inputA != 1)) {
+            if ((!inputA.equals("0")) && (!inputA.equals("1"))) {
                 throw new inputException(inputA);
             }
         
 
         
     
-            else if (inputA == 0) {
+            else if (inputA.equals("0")) {
                 System.out.println ("You have selected an indoor plant." + " Here is a list of Indoor plants to choose: \n" + "1. Herb(2) \n" + "2. Creeper(3) \n" + "3. Fern(4) \n" + "4. Succulent/Cactus(5) \n" + "5. Aquatic Plant(6) \n" + "6. Carnivorous Plant(7)") ;
                 result = false;
       
@@ -160,7 +166,7 @@ public class PlantSimulator {
 
         catch(inputException e){
             System.out.println(e.getMessage());
-            inputA = scnr.nextInt();
+            inputA = scnr.nextLine();
         }
     }
     
@@ -168,97 +174,139 @@ public class PlantSimulator {
     System.out.println("");
     
     //user selects a plant, updating inputB
+   
+    inputB = scnr.nextLine();
+    
+
+
+    // code for when doesn't select a number in range 2-7 or 0-1 n 3-7, exception, inputB
+
     result = true;
-    inputB = scnr.nextInt();
     
     while(result){
-    try{
-      
-      
-      if (inputA==0){
-         if (inputB < 2 || inputB > 7){
-           throw new inputException(inputB);
+        try{
         
-       }
-      else{
-        result = false;
+            if (inputA.equals("0")){
+                if (inputB.equals("2") || inputB.equals("3") || inputB.equals("4") || inputB.equals("5") || inputB.equals("6") || inputB.equals("7")){
+                    result = false;
+                }
+                else{
+                    throw new inputException(inputB);
+                }
+            }
+            
+            
+        
+        
+            else if (inputA.equals("1")){
+                if (inputB.equals("0") || inputB.equals("1") || inputB.equals("3") || inputB.equals("4") || inputB.equals("5") || inputB.equals("6") || inputB.equals("7")){
+                    result = false;
+                }
+                
+                else{
+                    throw new inputException(inputB);
+                }
+            }
+        
+        }
+        
+        catch(inputException e){
         System.out.println("");
-      }
-        
-      }
-      
-       else if (inputA==1){
-          if (inputB < 0 || inputB > 7 || inputB == 2){
-           throw new inputException(inputB);
-        
-       }
-       
-       else{
-        result = false;
-        System.out.println("");
-      }
-  
-        
-      }
-      
-      
-    }
-    catch(inputException e){
-      System.out.println(e.getMessage());
-      inputB = scnr.nextInt();
-    }
+        System.out.println(e.getMessage());
+        inputB = scnr.nextLine();
+        }
     
-    }
-     //need code for when doesn't select a number in range 2-7 or 0-1 n 3-7, exception 
+    } 
+
+    inputAInt = Integer.parseInt(inputA);
+    inputBInt = Integer.parseInt(inputB);
      
      
-     
-     
-    selectedPlant = plantType[inputA][inputB];
+    selectedPlant = plantType[inputAInt][inputBInt];
     
     //text asking for confirmation of plant type ,needs to be in a loop so more concise later, actually a method call might be better
     result = true;
     
-    
     while(result){
-    System.out.println("Is " + selectedPlant + " the correct plant?\n" + "Input 0 for yes and 1 for no.");
+        result2 = true;
+        System.out.println("Is " + selectedPlant + " the correct plant?\n" + "Input 0 for yes and 1 for no.");
     
-    confirmationInput = scnr.nextInt();
+        confirmationInput = scnr.nextLine();
     
-    if ((confirmationInput != 0) && (confirmationInput != 1)) {
-    System.out.println ("Please input 0 or 1.");
-    }
-    System.out.println("");
+        if ((!confirmationInput.equals("0")) && (!confirmationInput.equals("1"))) {
+            System.out.println ("Please input 0 or 1.");
+        }
+            System.out.println("");
+        
+
+
+        if (confirmationInput.equals("1")){ 
+            if (inputA.equals("0")) {
+                System.out.println ("You have selected an indoor plant." + " Here is a list of Indoor plants to choose: \n" + "1. Herb(2) \n" + "2. Creeper(3) \n" + "3. Fern(4) \n" + "4. Succulent/Cactus(5) \n" + "5. Aquatic Plant(6) \n" + "6. Carnivorous Plant(7)") ;
+            }
+        
+            else {
+                System.out.println ("You have selected an outdoor plant." + " Here is a list of Outdoor plants to choose: \n" + "1. Tree(0) \n" + "2. Shrub(1) \n" + "3. Creeper(3) \n" + "4. Fern(4) \n" + "5. Succulent/Cactus(5) \n" + "6. Aquatic Plant(6) \n" + "7. Carnivorous Plant(7)");   
+            }
+
+            System.out.println("");
     
-     if (confirmationInput == 1) {
-       if (inputA == 0) {
-    System.out.println ("You have selected an indoor plant." + " Here is a list of Indoor plants to choose: \n" + "1. Herb(2) \n" + "2. Creeper(3) \n" + "3. Fern(4) \n" + "4. Succulent/Cactus(5) \n" + "5. Aquatic Plant(6) \n" + "6. Carnivorous Plant(7)") ;
-         
-       }
+
+            //user reselects a plant, updating inputB
+            inputB = scnr.nextLine();
+
+            while(result2){
+                try{
+                
+                    if (inputA.equals("0")){
+                        if (inputB.equals("2") || inputB.equals("3") || inputB.equals("4") || inputB.equals("5") || inputB.equals("6") || inputB.equals("7")){
+                            result2 = false;
+                        }
+                        else{
+                            throw new inputException(inputB);
+                        }
+                    }
+                    
+                    
+                
+                
+                    else if (inputA.equals("1")){
+                        if (inputB.equals("0") || inputB.equals("1") || inputB.equals("3") || inputB.equals("4") || inputB.equals("5") || inputB.equals("6") || inputB.equals("7")){
+                            result2 = false;
+                        }
+                        
+                        else{
+                            throw new inputException(inputB);
+                        }
+                    }
+                
+                }
+        
+                catch(inputException e){
+                System.out.println("");
+                System.out.println(e.getMessage());
+                inputB = scnr.nextLine();
+                }
     
-    else {
-    System.out.println ("You have selected an outdoor plant." + " Here is a list of Outdoor plants to choose: \n" + "1. Tree(0) \n" + "2. Shrub(1) \n" + "3. Creeper(3) \n" + "4. Fern(4) \n" + "5. Succulent/Cactus(5) \n" + "6. Aquatic Plant(6) \n" + "7. Carnivorous Plant(7)");
-      
-    }
-    System.out.println("");
+            } 
+
+            inputBInt = Integer.parseInt(inputB);
+  
+            selectedPlant = plantType[inputAInt][inputBInt];
     
-    //user selects a plant, updating inputB
-    inputB = scnr.nextInt();
     
-     //need code for when doesn't select a number in range 2-7 or 0-1 n 3-7, exception
+        }
+
+
+
      
-    selectedPlant = plantType[inputA][inputB];
-    
-    
-     }
-     
-     else if (confirmationInput==0){
-       break;
-     }
+        else if (confirmationInput.equals("0")){
+            break;
+        }
     }
     
     //confirm plant, now provide information
-    if (confirmationInput==0){
+    if (confirmationInput.equals("0")){
       printPlantInfo(selectedPlant);
     }
     
