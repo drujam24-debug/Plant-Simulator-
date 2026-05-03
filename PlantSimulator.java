@@ -103,8 +103,6 @@ public class PlantSimulator {
     int inputA;
     int inputB;
     int confirmationInput = -1;
-    int i;
-    int j;
     boolean result = true;
     
     
@@ -136,16 +134,7 @@ public class PlantSimulator {
     inputA = scnr.nextInt();
     
     
-    
-    //print out list of plants, depending on inputA
-    /*if(inputA==0){
-      for (j=0 ; j<8 ; ++j){
-        System.out.println(plantType[inputA][j]);
-      }
-    }
-    */
-    
-    
+
     
     //Check if user selected indoor or outdoor plant and print appropriate message
     while(result){
@@ -266,7 +255,7 @@ public class PlantSimulator {
     }
     
     
-    
+    scnr.close();
     
     
     
