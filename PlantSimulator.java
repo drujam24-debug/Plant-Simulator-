@@ -201,7 +201,7 @@ public class PlantSimulator {
     }
     
     }
-     //need code for when doesn't select a number in range 2-7 or 0-1 n 3-7, exception FIXXXXXXXXXXXXXXXXXXXXXXXX
+     //need code for when doesn't select a number in range 2-7 or 0-1 n 3-7, exception 
      
      
      
