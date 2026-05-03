@@ -138,22 +138,30 @@ public class PlantSimulator {
     
     //Check if user selected indoor or outdoor plant and print appropriate message
     while(result){
-      if ((inputA != 0) && (inputA != 1)) {
-    System.out.println ("Please input 0 or 1 for indoor or outdoor plant");
-    inputA = scnr.nextInt();
-    }
+        try{
+            if ((inputA != 0) && (inputA != 1)) {
+                throw new inputException(inputA);
+            }
+        
+
+        
     
-    else if (inputA == 0) {
-    System.out.println ("You have selected an indoor plant." + " Here is a list of Indoor plants to choose: \n" + "1. Herb(2) \n" + "2. Creeper(3) \n" + "3. Fern(4) \n" + "4. Succulent/Cactus(5) \n" + "5. Aquatic Plant(6) \n" + "6. Carnivorous Plant(7)") ;
-    result = false;
+            else if (inputA == 0) {
+                System.out.println ("You have selected an indoor plant." + " Here is a list of Indoor plants to choose: \n" + "1. Herb(2) \n" + "2. Creeper(3) \n" + "3. Fern(4) \n" + "4. Succulent/Cactus(5) \n" + "5. Aquatic Plant(6) \n" + "6. Carnivorous Plant(7)") ;
+                result = false;
       
-    }
+            }
     
-    else {
-    System.out.println ("You have selected an outdoor plant." + " Here is a list of Outdoor plants to choose: \n" + "1. Tree(0) \n" + "2. Shrub(1) \n" + "3. Creeper(3) \n" + "4. Fern(4) \n" + "5. Succulent/Cactus(5) \n" + "6. Aquatic Plant(6) \n" + "7. Carnivorous Plant(7)");
-   result = false;
-    }
-    
+            else {
+                System.out.println ("You have selected an outdoor plant." + " Here is a list of Outdoor plants to choose: \n" + "1. Tree(0) \n" + "2. Shrub(1) \n" + "3. Creeper(3) \n" + "4. Fern(4) \n" + "5. Succulent/Cactus(5) \n" + "6. Aquatic Plant(6) \n" + "7. Carnivorous Plant(7)");
+                result = false;
+            }
+        }
+
+        catch(inputException e){
+            System.out.println(e.getMessage());
+            inputA = scnr.nextInt();
+        }
     }
     
     
