@@ -11,3 +11,10 @@ The code utilizes:
 
     3. Loops to help the user back track on some steps and
     help with incorrect input exception
+
+    4. String variables for input to have easier control and
+    handle all possible exceptions
+
+    5. Two int variables to concert the two String input
+    variables into integers so it can help access the 
+    specific plant type utilizing the 2D Array
