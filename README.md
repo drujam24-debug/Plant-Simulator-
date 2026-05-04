@@ -3,7 +3,7 @@ Code that lets the user go through a list of plant types. Eventually, depending 
 
 The code utilizes:
 
-    1. 2D Array to hold the type fo plant, indoor or outdoor, 
+    1. 2D Array to hold the type of plant, indoor or outdoor, 
     which is why the inputs are numbers for easy selection
 
     2. A method and an input exception method to organize code 
